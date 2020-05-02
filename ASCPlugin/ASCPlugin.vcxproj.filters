@@ -13,15 +13,141 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="imgui">
+      <UniqueIdentifier>{c1ff5791-7064-42c6-a83a-d8edf45740e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgui\implementation">
+      <UniqueIdentifier>{f859659f-be8d-4ba1-b6fb-53757d20d659}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgui\headers">
+      <UniqueIdentifier>{0a4fc54e-29a3-4d31-9bd0-5eb48205cb29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="http">
+      <UniqueIdentifier>{a5e7a9dc-0b90-4a11-88a9-426e222d3db1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="json">
+      <UniqueIdentifier>{56f54e26-d684-4f15-8c78-50b02b14fa35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ballchasing">
+      <UniqueIdentifier>{b6e703eb-9b7b-4563-ae83-1a06d59b9da6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ASCPlugin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GUISettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imconfig.h">
+      <Filter>imgui\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imgui.h">
+      <Filter>imgui\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imgui_additions.h">
+      <Filter>imgui\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imgui_impl_dx11.h">
+      <Filter>imgui\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imgui_impl_win32.h">
+      <Filter>imgui\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imgui_internal.h">
+      <Filter>imgui\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imgui_rangeslider.h">
+      <Filter>imgui\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imgui_searchablecombo.h">
+      <Filter>imgui\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imgui_timeline.h">
+      <Filter>imgui\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imguivariouscontrols.h">
+      <Filter>imgui\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imstb_rectpack.h">
+      <Filter>imgui\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imstb_textedit.h">
+      <Filter>imgui\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imstb_truetype.h">
+      <Filter>imgui\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="json\json.hpp">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="http\httplib.h">
+      <Filter>http</Filter>
+    </ClInclude>
+    <ClInclude Include="ballchasing\APIDataClasses.h">
+      <Filter>ballchasing</Filter>
+    </ClInclude>
+    <ClInclude Include="ballchasing\BallchasingApi.h">
+      <Filter>ballchasing</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ASCPlugin.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GUISettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\imgui.cpp">
+      <Filter>imgui\implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\imgui_additions.cpp">
+      <Filter>imgui\implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\imgui_demo.cpp">
+      <Filter>imgui\implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\imgui_draw.cpp">
+      <Filter>imgui\implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\imgui_impl_dx11.cpp">
+      <Filter>imgui\implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\imgui_impl_win32.cpp">
+      <Filter>imgui\implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\imgui_rangeslider.cpp">
+      <Filter>imgui\implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\imgui_searchablecombo.cpp">
+      <Filter>imgui\implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\imgui_timeline.cpp">
+      <Filter>imgui\implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\imgui_widgets.cpp">
+      <Filter>imgui\implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\imguivariouscontrols.cpp">
+      <Filter>imgui\implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BallchaserlogGUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="http\httplib.cc">
+      <Filter>http</Filter>
+    </ClCompile>
+    <ClCompile Include="ballchasing\APIDataClasses.cpp">
+      <Filter>ballchasing</Filter>
+    </ClCompile>
+    <ClCompile Include="ballchasing\BallchasingApi.cpp">
+      <Filter>ballchasing</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

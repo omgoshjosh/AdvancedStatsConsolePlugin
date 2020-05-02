@@ -1,16 +1,24 @@
+#include "pch.h"
 #include "ASCPlugin.h"
 #include "bakkesmod\wrappers\includes.h"
 #include "utils/parser.h"
-BAKKESMOD_PLUGIN(ASCPlugin, "Advanced Stats Console plugin", "0.1", PLUGINTYPE_REPLAY)
+BAKKESMOD_PLUGIN(ASCPlugin, "Advanced Stats Console plugin", plugin_version, PLUGINTYPE_REPLAY)
 std::ofstream interaction_file;
 
 
 void ASCPlugin::onLoad()
 {
+	// SHOT SPEED
 	gameWrapper->HookEventWithCaller<CarWrapper>("Function TAGame.Car_TA.OnRigidBodyCollision", std::bind(&ASCPlugin::OnHitBallPre, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 	gameWrapper->HookEventPost("Function TAGame.Car_TA.EventHitBall", std::bind(&ASCPlugin::OnHitBall, this, std::placeholders::_1));
-	gameWrapper->RegisterDrawable(std::bind(&ASCPlugin::Render, this, std::placeholders::_1));
+	gameWrapper->RegisterDrawable(std::bind(&ASCPlugin::RenderShotSpeedPopup, this, std::placeholders::_1));
 	interaction_file.open("./bakkesmod/interactions.csv", std::ios_base::app);
+
+	// BALLCHASING
+	api = std::make_shared<BallchasingAPI>(cvarManager, gameWrapper);
+	cvarManager->registerNotifier("ballchasing_ping", std::bind(&BallchasingAPI::Ping, api), "test", 0);
+	//cvarManager->registerNotifier("mymatches", std::bind(&BallchasingAPI::GetLastMatches, api), "test", 0);
+	//cvarManager->registerNotifier("replay_detail", std::bind(&BallchasingAPI::GetReplayDetails, api), "test", 0);
 }
 
 void ASCPlugin::onUnload()
@@ -92,7 +100,7 @@ void ASCPlugin::OnHitBall(std::string eventName)
 	}, 0.2f);
 }
 
-void ASCPlugin::Render(CanvasWrapper canvas)
+void ASCPlugin::RenderShotSpeedPopup(CanvasWrapper canvas)
 {
 	if (!gameWrapper->IsInGame() || popups.empty())
 		return;
