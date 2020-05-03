@@ -143,10 +143,28 @@ struct GetReplaysResponse
 	std::vector<GetReplayResponseData> replays;
 };
 
+struct GetReplayGroupResponseData
+{
+	std::string replay_group_name;
+	std::string id;
+	std::string status;
+
+	Team players;
+	Team teams;
+};
+
+struct GetReplayGroupsResponse
+{
+	int count;
+	std::vector<GetReplayGroupResponseData> replay_groups;
+};
+
 
 
 void from_json(const nlohmann::json& j, GetReplayResponseData& p);
 void from_json(const nlohmann::json& j, GetReplaysResponse& p);
+void from_json(const nlohmann::json& j, GetReplayGroupResponseData& p);
+void from_json(const nlohmann::json& j, GetReplayGroupsResponse& p);
 void from_json(const nlohmann::json& j, Team& p);
 void from_json(const nlohmann::json& j, Team::Player& p);
 void from_json(const nlohmann::json& j, Team::Player::Id& p);

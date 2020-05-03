@@ -23,6 +23,21 @@ void from_json(const json& j, GetReplaysResponse& p) {
 	J2(list, replays);
 }
 
+
+void from_json(const json& j, GetReplayGroupResponseData& p) {
+	JOPTIONAL(replay_group_name);
+	JOPTIONAL2(name, replay_group_name);
+	JOPTIONAL(status);
+	J(id);
+	J(players);
+	J(teams);
+}
+
+void from_json(const json& j, GetReplayGroupsResponse& p) {
+	J(count);
+	J2(list, replay_groups);
+}
+
 void from_json(const nlohmann::json& j, Team& p)
 {
 	JOPTIONAL(name);

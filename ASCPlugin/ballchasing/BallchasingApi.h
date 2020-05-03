@@ -15,6 +15,7 @@ public:
 
 	void GetLastMatches();
 	std::vector<GetReplayResponseData> lastMatchesResult;
+	std::vector<GetReplayGroupResponseData> lastReplayGroupsResult;
 
 	GetReplayResponseData GetCachedDetail(std::string id);
 

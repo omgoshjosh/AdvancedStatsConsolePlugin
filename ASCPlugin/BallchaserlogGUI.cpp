@@ -27,30 +27,24 @@ void ASCPlugin::Render()
 		ImGui::End();
 		return;
 	}
-	//ImGui::ShowDemoWindow();
+	ImGui::ShowDemoWindow();
 
 	ImGui::Columns(2);
 	static bool replayListCollapsed = false;
 	static float uncollapseWidth = 0;
 	static std::string detailID = "";
+
+	//ImGui::BeginChild("LeftPane");
+
 	if (!replayListCollapsed)
 	{
-		ImGui::Text("Your latest replays"); ImGui::SameLine(ImGui::GetColumnWidth(0) - 25);
+		ImGui::Text("Your replay groups"); ImGui::SameLine(ImGui::GetColumnWidth(0) - 25);
 		if (ImGui::ArrowButton(">>", ImGuiDir_Left)) {
 			replayListCollapsed = true;
 			uncollapseWidth = ImGui::GetColumnWidth(0);
-			ImGui::SetColumnWidth(0, 20);
+			ImGui::SetColumnWidth(0, 30);
 		}
-	}
-	else {
-		if (ImGui::ArrowButton(">>", ImGuiDir_Right)) {
-			replayListCollapsed = false;
-			ImGui::SetColumnWidth(0, uncollapseWidth);
-		}
-	}
-	ImGui::BeginChild("ReplayList");
-
-	if (!replayListCollapsed) {
+		ImGui::BeginChild("ReplayGroupList", ImVec2(0, ImGui::GetWindowHeight() * 0.5f - 40), true);
 		for (auto& replay : api->lastMatchesResult)
 		{
 			if (ImGui::Selectable(replay.replay_title.c_str(), replay.id == detailID))
@@ -67,8 +61,37 @@ void ASCPlugin::Render()
 				ImGui::EndTooltip();
 			}
 		}
+		ImGui::EndChild();
+
+		ImGui::Text("Your latest replays");
+		ImGui::BeginChild("ReplayList", ImVec2(0, ImGui::GetWindowHeight() * 0.5f - 40), true);
+		for (auto& replay : api->lastMatchesResult)
+		{
+			if (ImGui::Selectable(replay.replay_title.c_str(), replay.id == detailID))
+			{
+				cvarManager->log("selected detail");
+				detailID = replay.id;
+			}
+			if (ImGui::IsItemHovered()) {
+				ImGui::BeginTooltip();
+				std::string blueTeam = joinPlayers(replay.blue);
+				std::string orangeTeam = joinPlayers(replay.orange);
+				ImGui::Text("%i\t: %s", replay.blue.goals, blueTeam.c_str());
+				ImGui::Text("%i\t: %s", replay.orange.goals, orangeTeam.c_str());
+				ImGui::EndTooltip();
+			}
+		}
+		ImGui::EndChild();
 	}
-	ImGui::EndChild();
+	else {
+		if (ImGui::ArrowButton(">>", ImGuiDir_Right)) {
+			replayListCollapsed = false;
+			ImGui::SetColumnWidth(0, uncollapseWidth);
+		}
+	}
+
+	//ImGui::EndChild();
+
 	ImGui::NextColumn();
 	if (!detailID.empty())
 	{
